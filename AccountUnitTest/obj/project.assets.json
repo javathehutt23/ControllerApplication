@@ -5835,11 +5835,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\harry\\OneDrive\\Desktop\\AccountUnitTest\\AccountUnitTest.csproj",
+      "projectUniqueName": "C:\\Users\\harry\\OneDrive\\Documents\\CPP stuff\\Year 3 files\\IT7742\\IT7742_assessment_2_91031026\\ControllerApplication\\AccountUnitTest\\AccountUnitTest.csproj",
       "projectName": "AccountUnitTest",
-      "projectPath": "C:\\Users\\harry\\OneDrive\\Desktop\\AccountUnitTest\\AccountUnitTest.csproj",
+      "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\CPP stuff\\Year 3 files\\IT7742\\IT7742_assessment_2_91031026\\ControllerApplication\\AccountUnitTest\\AccountUnitTest.csproj",
       "packagesPath": "C:\\Users\\harry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\harry\\OneDrive\\Desktop\\AccountUnitTest\\obj\\",
+      "outputPath": "C:\\Users\\harry\\OneDrive\\Documents\\CPP stuff\\Year 3 files\\IT7742\\IT7742_assessment_2_91031026\\ControllerApplication\\AccountUnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -5859,8 +5859,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\harry\\OneDrive\\Desktop\\ControllerApp\\ControllerApp.csproj": {
-              "projectPath": "C:\\Users\\harry\\OneDrive\\Desktop\\ControllerApp\\ControllerApp.csproj"
+            "C:\\Users\\harry\\OneDrive\\Documents\\CPP stuff\\Year 3 files\\IT7742\\IT7742_assessment_2_91031026\\ControllerApplication\\ControllerApp\\ControllerApp.csproj": {
+              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\CPP stuff\\Year 3 files\\IT7742\\IT7742_assessment_2_91031026\\ControllerApplication\\ControllerApp\\ControllerApp.csproj"
             }
           }
         }

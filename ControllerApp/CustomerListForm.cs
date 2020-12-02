@@ -20,6 +20,7 @@ namespace ControllerApp
             InitializeComponent();
             FormLoad();
         }
+        // add a if statement, making sure the edit isn't called without a user selected
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
             string a = lsbCustomerList.GetItemText(lsbCustomerList.SelectedItem);
