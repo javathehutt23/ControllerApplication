@@ -21,7 +21,7 @@ namespace ControllerApp
         public event Action ReloadForm;
         private void btnSave_Click(object sender, EventArgs e)
         {
-            controller.AddCustomer(tbxName.Text,tbxContactDetails.Text);
+            controller.AddCustomer(tbxName.Text,tbxContactDetails.Text, cbxStaff.Checked);
             MessageBox.Show("customer added.");
             this.Close();
             ReloadForm();

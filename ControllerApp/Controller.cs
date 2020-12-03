@@ -10,7 +10,7 @@ namespace ControllerApp
     {
         public List<Customer> CustomerList = Customer.CustomerList;
 
-        public void AddCustomer(string customerName, string contactDetails)
+        public void AddCustomer(string customerName, string contactDetails, bool contactStaff)
         {
             CustomerList = Customer.CustomerList;
             int i = 1;
@@ -19,7 +19,7 @@ namespace ControllerApp
                 if (c.CustomerId == i) { i++; }
                 else { break; }
             }
-            CustomerList.Add(new Customer(i, customerName, contactDetails));
+            CustomerList.Add(new Customer(i, customerName, contactDetails, contactStaff));
             Customer.CustomerList = CustomerList;
         }
 
@@ -34,12 +34,12 @@ namespace ControllerApp
             }
         }
 
-        public void EditCustomer(int customerId, string customerName, string contactDetails)
+        public void EditCustomer(int customerId, string customerName, string contactDetails, bool contactStaff)
         {
             Customer customer = FindCustomerById(customerId);
             foreach (Customer c in CustomerList)
             {
-                if (c.CustomerId == customerId) { c.Name = customerName; c.ContactDetails = contactDetails; Customer.CustomerList = CustomerList; }
+                if (c.CustomerId == customerId) { c.Name = customerName; c.ContactDetails = contactDetails; c.IsStaff = contactStaff; Customer.CustomerList = CustomerList; }
             }
         }
 

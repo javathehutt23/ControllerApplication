@@ -19,7 +19,7 @@ namespace ControllerApp
             InitializeComponent();
             controller.CustomerList = Customer.CustomerList;
             Customer c = controller.FindCustomerById(a);
-            txbName.Text = c.Name; txbContactDetails.Text = c.ContactDetails; lblCustomerID.Text = "ID: " + c.CustomerId;
+            txbName.Text = c.Name; txbContactDetails.Text = c.ContactDetails; cbxStaff.Checked = c.IsStaff; lblCustomerID.Text = "ID: " + c.CustomerId;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace ControllerApp
             int CustomerId = 0;
             try { CustomerId = Int32.Parse(b[1]); }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
-            controller.EditCustomer(CustomerId, txbName.Text, txbContactDetails.Text);
+            controller.EditCustomer(CustomerId, txbName.Text, txbContactDetails.Text, cbxStaff.Checked);
             MessageBox.Show("customer edited.");
             this.Close();
             ReloadForm();

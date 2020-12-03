@@ -22,20 +22,27 @@ namespace ControllerApp
         }
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
-            string a = lsbCustomerList.GetItemText(lsbCustomerList.SelectedItem);
-            string[] b = a.Split(',');
-            int CustomerId = 0;
-            try { CustomerId = Int32.Parse(b[0]); }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-            EditCustomerForm editCustomerForm = new EditCustomerForm(CustomerId);
-            editCustomerForm.ReloadForm += RefreshList;
-            editCustomerForm.ShowDialog(this);
+            try
+            {
+                string a = lsbCustomerList.GetItemText(lsbCustomerList.SelectedItem);
+                string[] b = a.Split(',');
+                int CustomerId = 0;
+                try { CustomerId = Int32.Parse(b[0]); }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                EditCustomerForm editCustomerForm = new EditCustomerForm(CustomerId);
+                editCustomerForm.ReloadForm += RefreshList;
+                editCustomerForm.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please select a customer");
+            }
         }
 
         public void FormLoad()
         {
             lsbCustomerList.Items.Clear();
-            CustomerList.Add(new Customer(1, "John Schmit", "0216516123"));
+            CustomerList.Add(new Customer(1, "John Schmit", "0216516123", true));
             Customer.CustomerList = CustomerList;
             controller.CustomerList = Customer.CustomerList;
             foreach (Customer c in controller.CustomerList)
@@ -78,6 +85,25 @@ namespace ControllerApp
             foreach(Customer c in Customer.CustomerList)
             {
                 lsbCustomerList.Items.Add(c.CustomerId +", " + c.Name);
+            }
+        }
+
+        private void BtnViewAccounts_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string a = lsbCustomerList.GetItemText(lsbCustomerList.SelectedItem);
+                string[] b = a.Split(',');
+                int CustomerId = 0;
+                try { CustomerId = Int32.Parse(b[0]); }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                EditCustomerForm editCustomerForm = new EditCustomerForm(CustomerId);
+                editCustomerForm.ReloadForm += RefreshList;
+                editCustomerForm.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please select a customer");
             }
         }
     }

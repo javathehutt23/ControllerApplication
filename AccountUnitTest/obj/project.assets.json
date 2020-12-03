@@ -5830,19 +5830,21 @@
   },
   "packageFolders": {
     "C:\\Users\\harry\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\harry\\OneDrive\\Desktop\\AccountUnitTest\\AccountUnitTest.csproj",
+      "projectUniqueName": "C:\\Users\\harry\\Documents\\CPP\\Github repos\\ControllerApplication\\AccountUnitTest\\AccountUnitTest.csproj",
       "projectName": "AccountUnitTest",
-      "projectPath": "C:\\Users\\harry\\OneDrive\\Desktop\\AccountUnitTest\\AccountUnitTest.csproj",
+      "projectPath": "C:\\Users\\harry\\Documents\\CPP\\Github repos\\ControllerApplication\\AccountUnitTest\\AccountUnitTest.csproj",
       "packagesPath": "C:\\Users\\harry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\harry\\OneDrive\\Desktop\\AccountUnitTest\\obj\\",
+      "outputPath": "C:\\Users\\harry\\Documents\\CPP\\Github repos\\ControllerApplication\\AccountUnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5859,8 +5861,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\harry\\OneDrive\\Desktop\\ControllerApp\\ControllerApp.csproj": {
-              "projectPath": "C:\\Users\\harry\\OneDrive\\Desktop\\ControllerApp\\ControllerApp.csproj"
+            "C:\\Users\\harry\\Documents\\CPP\\Github repos\\ControllerApplication\\ControllerApp\\ControllerApp.csproj": {
+              "projectPath": "C:\\Users\\harry\\Documents\\CPP\\Github repos\\ControllerApplication\\ControllerApp\\ControllerApp.csproj"
             }
           }
         }
@@ -5887,23 +5889,16 @@
             "version": "[15.9.0, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

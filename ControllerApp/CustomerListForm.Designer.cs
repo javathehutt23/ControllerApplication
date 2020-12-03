@@ -33,21 +33,25 @@
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnViewAccounts = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lsbCustomerList
             // 
             this.lsbCustomerList.FormattingEnabled = true;
-            this.lsbCustomerList.Location = new System.Drawing.Point(12, 64);
+            this.lsbCustomerList.ItemHeight = 16;
+            this.lsbCustomerList.Location = new System.Drawing.Point(16, 79);
+            this.lsbCustomerList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lsbCustomerList.Name = "lsbCustomerList";
-            this.lsbCustomerList.Size = new System.Drawing.Size(252, 368);
+            this.lsbCustomerList.Size = new System.Drawing.Size(335, 452);
             this.lsbCustomerList.TabIndex = 0;
             // 
             // btnAddAccount
             // 
-            this.btnAddAccount.Location = new System.Drawing.Point(289, 64);
+            this.btnAddAccount.Location = new System.Drawing.Point(385, 79);
+            this.btnAddAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddAccount.Name = "btnAddAccount";
-            this.btnAddAccount.Size = new System.Drawing.Size(235, 103);
+            this.btnAddAccount.Size = new System.Drawing.Size(313, 98);
             this.btnAddAccount.TabIndex = 1;
             this.btnAddAccount.Text = "Add Customer";
             this.btnAddAccount.UseVisualStyleBackColor = true;
@@ -55,9 +59,10 @@
             // 
             // btnEditAccount
             // 
-            this.btnEditAccount.Location = new System.Drawing.Point(289, 196);
+            this.btnEditAccount.Location = new System.Drawing.Point(385, 196);
+            this.btnEditAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditAccount.Name = "btnEditAccount";
-            this.btnEditAccount.Size = new System.Drawing.Size(235, 103);
+            this.btnEditAccount.Size = new System.Drawing.Size(313, 98);
             this.btnEditAccount.TabIndex = 2;
             this.btnEditAccount.Text = "Edit Selected Customer";
             this.btnEditAccount.UseVisualStyleBackColor = true;
@@ -65,9 +70,10 @@
             // 
             // btnDeleteAccount
             // 
-            this.btnDeleteAccount.Location = new System.Drawing.Point(289, 329);
+            this.btnDeleteAccount.Location = new System.Drawing.Point(385, 312);
+            this.btnDeleteAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
-            this.btnDeleteAccount.Size = new System.Drawing.Size(235, 103);
+            this.btnDeleteAccount.Size = new System.Drawing.Size(313, 102);
             this.btnDeleteAccount.TabIndex = 3;
             this.btnDeleteAccount.Text = "Delete Selected Customer";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
@@ -77,22 +83,36 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(17, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 24);
+            this.label1.Size = new System.Drawing.Size(98, 29);
             this.label1.TabIndex = 4;
             this.label1.Text = "MyBank";
             // 
+            // btnViewAccounts
+            // 
+            this.btnViewAccounts.Location = new System.Drawing.Point(385, 429);
+            this.btnViewAccounts.Margin = new System.Windows.Forms.Padding(4);
+            this.btnViewAccounts.Name = "btnViewAccounts";
+            this.btnViewAccounts.Size = new System.Drawing.Size(313, 102);
+            this.btnViewAccounts.TabIndex = 5;
+            this.btnViewAccounts.Text = "View Customer Account\'s";
+            this.btnViewAccounts.UseVisualStyleBackColor = true;
+            this.btnViewAccounts.Click += new System.EventHandler(this.BtnViewAccounts_Click);
+            // 
             // CustomerListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 461);
+            this.ClientSize = new System.Drawing.Size(779, 567);
+            this.Controls.Add(this.btnViewAccounts);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDeleteAccount);
             this.Controls.Add(this.btnEditAccount);
             this.Controls.Add(this.btnAddAccount);
             this.Controls.Add(this.lsbCustomerList);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CustomerListForm";
             this.Text = "CustomerListForm";
             this.ResumeLayout(false);
@@ -107,5 +127,6 @@
         private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnViewAccounts;
     }
 }

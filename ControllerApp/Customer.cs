@@ -12,6 +12,7 @@ namespace ControllerApp
         private int customerId;
         private string name;
         private string contactDetails;
+        private bool isStaff;
         //private List<Account> customerAccount;
 
         public int CustomerId
@@ -33,15 +34,21 @@ namespace ControllerApp
         }
         //ContactDetails contactDetails = new ContactDetails();
 
+        public bool IsStaff
+        {
+            get { return isStaff; }
+            set { isStaff = value; }
+        }
+
         public List<Account> CustomerAccount = new List<Account>();
 
 
-        public Customer(int customerId, string name, string contactDetails)
+        public Customer(int customerId, string name, string contactDetails, bool isStaff)
         {
             this.customerId = customerId;
             this.name = name;
             this.contactDetails = contactDetails;
-
+            this.isStaff = isStaff;
         }
 
     }
