@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControllerApp.Accounts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,10 @@ namespace ControllerApp
             set { isStaff = value; }
         }
 
-        public List<Account> CustomerAccount = new List<Account>();
+        public List<EverydayAccount> EverydayAccount = new List<EverydayAccount>();
+        public List<InvestmentAccount> InvestmentAccount { get; set; }
+        public List<OmniAccount> OmniAccount { get; set; }
+
 
 
         public Customer(int customerId, string name, string contactDetails, bool isStaff)
@@ -50,7 +54,7 @@ namespace ControllerApp
             this.contactDetails = contactDetails;
             this.isStaff = isStaff;
         }
-
+        
     }
 }
 

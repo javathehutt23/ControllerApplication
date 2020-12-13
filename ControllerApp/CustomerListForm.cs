@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControllerApp.Accounts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,7 +43,15 @@ namespace ControllerApp
         public void FormLoad()
         {
             lsbCustomerList.Items.Clear();
-            CustomerList.Add(new Customer(1, "John Schmit", "0216516123", true));
+            Customer customer1 = new Customer(1, "John Schmit", "0216516123", true);
+            EverydayAccount everydayAccount = new EverydayAccount(customer1, 1, 400);
+            customer1.EverydayAccount.Add(everydayAccount);
+
+            OmniAccount omniAccount = new OmniAccount(customer1, 1, 400, 1000);
+            customer1.OmniAccount.Add(omniAccount);
+            Console.WriteLine(customer1.EverydayAccount.Count);
+
+            CustomerList.Add(customer1);
             Customer.CustomerList = CustomerList;
             controller.CustomerList = Customer.CustomerList;
             foreach (Customer c in controller.CustomerList)

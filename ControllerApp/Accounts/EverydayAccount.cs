@@ -34,9 +34,9 @@ namespace ControllerApp
         }*/
         public EverydayAccount(Customer c, int accountId, float balance)
         {
-            AccountId = accountId;
-            customer = c;
-            Balance = balance;
+            this.AccountId = accountId;
+            this.customer = c;
+            this.Balance = balance;
         }
 
         

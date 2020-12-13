@@ -27,13 +27,13 @@ namespace ControllerApp.Accounts
             set { overdraftLimit = value; }
         }
 
-        public OmniAccount(Customer c, int accountId, float balance, int interest, int fee, float overdraft)
+        public OmniAccount(Customer c, int accountId, float balance, float overdraft)
         {
             AccountId = accountId;
             customer = c;
             Balance = balance;
-            InterestRate = interest;
-            Fees = fee;
+            InterestRate = 4;
+            Fees = 10;
             OverdraftLimit = overdraft;
         }
 
