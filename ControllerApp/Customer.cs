@@ -42,10 +42,8 @@ namespace ControllerApp
         }
 
         public List<EverydayAccount> EverydayAccount = new List<EverydayAccount>();
-        public List<InvestmentAccount> InvestmentAccount { get; set; }
-        public List<OmniAccount> OmniAccount { get; set; }
-
-
+        public List<InvestmentAccount> InvestmentAccount = new List<InvestmentAccount>();
+        public List<OmniAccount> OmniAccount = new List<OmniAccount>();
 
         public Customer(int customerId, string name, string contactDetails, bool isStaff)
         {

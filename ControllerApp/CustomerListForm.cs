@@ -44,11 +44,14 @@ namespace ControllerApp
         {
             lsbCustomerList.Items.Clear();
             Customer customer1 = new Customer(1, "John Schmit", "0216516123", true);
+
             EverydayAccount everydayAccount = new EverydayAccount(customer1, 1, 400);
             customer1.EverydayAccount.Add(everydayAccount);
-
             OmniAccount omniAccount = new OmniAccount(customer1, 1, 400, 1000);
             customer1.OmniAccount.Add(omniAccount);
+            InvestmentAccount investmentAccount = new InvestmentAccount(customer1, 1, 750);
+            customer1.InvestmentAccount.Add(investmentAccount);
+
             Console.WriteLine(customer1.EverydayAccount.Count);
 
             CustomerList.Add(customer1);
@@ -106,9 +109,9 @@ namespace ControllerApp
                 int CustomerId = 0;
                 try { CustomerId = Int32.Parse(b[0]); }
                 catch (Exception ex) { Console.WriteLine(ex.Message); }
-                EditCustomerForm editCustomerForm = new EditCustomerForm(CustomerId);
-                editCustomerForm.ReloadForm += RefreshList;
-                editCustomerForm.ShowDialog(this);
+                CustomerAccountForm customerAccountForm = new CustomerAccountForm(CustomerId);
+                //customerAccountForm.ReloadForm += RefreshList;
+                customerAccountForm.ShowDialog(this);
             }
             catch (Exception ex)
             {
