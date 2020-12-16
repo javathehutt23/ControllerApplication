@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControllerApp.Accounts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,6 +53,68 @@ namespace ControllerApp
             return null;  
         }
 
+        public void EditAccountBalance(int customerId, string accountType, int accountId, int amount)
+        {
+            CustomerList = Customer.CustomerList;
+            Customer customer = FindCustomerById(customerId);
+            if(accountType == "Everyday")
+            {
+                int index = customer.EverydayAccount.FindIndex(item => item.AccountId == accountId);
+                customer.EverydayAccount[index].Balance = customer.EverydayAccount[index].Balance + amount;
+                Console.WriteLine(customer.EverydayAccount[index].Balance);
+                Customer.CustomerList = CustomerList;
+            }
+            else if(accountType == "Investment"){
+                int index = customer.InvestmentAccount.FindIndex(item => item.AccountId == accountId);
+                customer.InvestmentAccount[index].Balance = customer.InvestmentAccount[index].Balance + amount;
+                Customer.CustomerList = CustomerList;
+            }
+            else if(accountType == "Omni")
+            {
+                int index = customer.OmniAccount.FindIndex(item => item.AccountId == accountId);
+                customer.OmniAccount[index].Balance = customer.OmniAccount[index].Balance + amount;
+                Customer.CustomerList = CustomerList;
+            }
+        }
+        public void AddAccount(int customerId, string accountType, float balance, float overdraft)
+        {
+            CustomerList = Customer.CustomerList;
+            Customer customer = FindCustomerById(customerId);
+            int i = 1;
+            if (accountType == "Everyday")
+            {  
+                foreach (EverydayAccount e in customer.EverydayAccount)
+                {
+                    if (e.AccountId == i) { i++; }
+                    else { break; }
+                }
+                EverydayAccount everyday = new EverydayAccount(customer, i, balance);
+                customer.EverydayAccount.Add(everyday);
+                Customer.CustomerList = CustomerList;
+            }
+            else if (accountType == "Investment")
+            {
+                foreach (InvestmentAccount e in customer.InvestmentAccount)
+                {
+                    if (e.AccountId == i) { i++; }
+                    else { break; }
+                }
+                InvestmentAccount investment = new InvestmentAccount(customer, i, balance);
+                customer.InvestmentAccount.Add(investment);
+                Customer.CustomerList = CustomerList;
+            }
+            else if (accountType == "Omni")
+            {
+                foreach (OmniAccount e in customer.OmniAccount)
+                {
+                    if (e.AccountId == i) { i++; }
+                    else { break; }
+                }
+                OmniAccount omni = new OmniAccount(customer, i, balance, overdraft);
+                customer.OmniAccount.Add(omni);
+                Customer.CustomerList = CustomerList;
+            }
+        }
 
     }
 }

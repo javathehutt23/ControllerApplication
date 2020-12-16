@@ -111,7 +111,7 @@ namespace ControllerApp
                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                 CustomerAccountForm customerAccountForm = new CustomerAccountForm(CustomerId);
                 //customerAccountForm.ReloadForm += RefreshList;
-                customerAccountForm.ShowDialog(this);
+                customerAccountForm.Show(this);
             }
             catch (Exception ex)
             {

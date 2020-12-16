@@ -50,6 +50,12 @@
     <Compile Include="Accounts\EverydayAccount.cs" />
     <Compile Include="Accounts\InvestmentAccount.cs" />
     <Compile Include="Accounts\OmniAccount.cs" />
+    <Compile Include="AddAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAccountForm.Designer.cs">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddAccountForm.resx">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddCustomerForm.resx">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
