@@ -37,7 +37,7 @@ namespace ControllerApp
             }
             int AccountId = 0;
             int balance = 0;
-            string balanceText= "";
+            string balanceText= txbInputs.Text;
             if (txbInputs.Text.Contains("-"))
             {
                 MessageBox.Show("you cannot type in a negative number"); return;
@@ -86,7 +86,7 @@ namespace ControllerApp
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            AddAccountForm addAccountForm = new AddAccountForm(customer);
+            AddAccountForm addAccountForm = new AddAccountForm(customer.CustomerId);
             addAccountForm.ShowDialog(this);
             RefreshList();
         }
@@ -117,7 +117,13 @@ namespace ControllerApp
 
         private void btnTransfer_Click(object sender, EventArgs e)
         {
+            TransferAccountForm transferAccountForm = new TransferAccountForm(customer.CustomerId);
+            transferAccountForm.ShowDialog(this);
+        }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

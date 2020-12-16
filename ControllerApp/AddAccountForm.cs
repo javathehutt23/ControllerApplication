@@ -15,11 +15,11 @@ namespace ControllerApp
         public List<Customer> CustomerList = new List<Customer>();
         Controller controller = new Controller();
         Customer customer;
-        public AddAccountForm(Customer customer)
+        public AddAccountForm(int customerId)
         {
             InitializeComponent();
-            CustomerList = Customer.CustomerList;
-            this.customer = customer;
+            controller.CustomerList = Customer.CustomerList;
+            customer = controller.FindCustomerById(customerId);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
