@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ControllerApp
 {
@@ -60,22 +61,56 @@ namespace ControllerApp
             if(accountType == "Everyday")
             {
                 int index = customer.EverydayAccount.FindIndex(item => item.AccountId == accountId);
-                customer.EverydayAccount[index].Balance = customer.EverydayAccount[index].Balance + amount;
+                if ((customer.EverydayAccount[index].Balance + amount) < 0)
+                {
+                    MessageBox.Show("failed transaction, tried to take out too much"); return;
+                }
+                customer.EverydayAccount[index].Balance += amount;
                 Console.WriteLine(customer.EverydayAccount[index].Balance);
                 Customer.CustomerList = CustomerList;
             }
             else if(accountType == "Investment"){
                 int index = customer.InvestmentAccount.FindIndex(item => item.AccountId == accountId);
-                customer.InvestmentAccount[index].Balance = customer.InvestmentAccount[index].Balance + amount;
+                if ((customer.InvestmentAccount[index].Balance + amount) < 0)
+                {
+                    if (customer.InvestmentAccount[index].Balance > customer.InvestmentAccount[index].Fees)
+                    {
+                        customer.InvestmentAccount[index].Balance -= customer.InvestmentAccount[index].Fees;
+                    }
+                    Customer.CustomerList = CustomerList;
+                    MessageBox.Show("failed transaction, tried to take out too much, fee incurred"); return;
+                }
+                customer.InvestmentAccount[index].Balance += amount;
                 Customer.CustomerList = CustomerList;
             }
             else if(accountType == "Omni")
             {
                 int index = customer.OmniAccount.FindIndex(item => item.AccountId == accountId);
+                if ((customer.OmniAccount[index].Balance + amount) < 0)
+                {
+                    if((customer.OmniAccount[index].Balance + customer.OmniAccount[index].OverdraftLimit) < customer.OmniAccount[index].Fees)
+                    {
+                        if (customer.OmniAccount[index].Balance > customer.OmniAccount[index].Fees)
+                        {
+                            customer.OmniAccount[index].Balance -= customer.OmniAccount[index].Fees;
+                        }
+                        Customer.CustomerList = CustomerList;
+                        MessageBox.Show("failed transaction, overdraft limit reached, Fee Incurred"); return;
+                    }
+                    else
+                    {
+                        customer.OmniAccount[index].Balance -= customer.OmniAccount[index].Fees;
+                        float a = customer.OmniAccount[index].Balance + customer.OmniAccount[index].OverdraftLimit;
+                        a -= customer.OmniAccount[index].Fees;
+                        Customer.CustomerList = CustomerList;
+                        MessageBox.Show("failed transaction, tried to take out too much, fee incurred"); return;
+                    }
+                }
                 customer.OmniAccount[index].Balance = customer.OmniAccount[index].Balance + amount;
                 Customer.CustomerList = CustomerList;
             }
         }
+
         public void AddAccount(int customerId, string accountType, float balance, float overdraft)
         {
             CustomerList = Customer.CustomerList;

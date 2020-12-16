@@ -31,31 +31,39 @@ namespace ControllerApp
             string a = lsbAccountList.GetItemText(lsbAccountList.SelectedItem);
             string[] accountType = a.Split(' ');
             string type = lblInput.Text; string[] typeList = type.Split(':');
-            int AccountId;
-            int g;
-            if (int.TryParse(txbInputs.Text, g))
+            if (lblInput.Text != "Withdraw" && lblInput.Text == "Deposit")
             {
-                try
-                {
-                    AccountId = Int32.Parse(accountType[1]);
-                    string balance = txbInputs.Text;
-                    if (typeList[1] == " Withdraw")
-                    {
-                        balance = "-" + txbInputs.Text;
-                        Console.WriteLine(balance);
-                    }
-                    Console.WriteLine(typeList[1]);
-                    Console.WriteLine(accountType[0]);
-                    controller.EditAccountBalance(customer.CustomerId, accountType[0], AccountId, Int32.Parse(balance));
-                }
-                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                MessageBox.Show("Please select a transaction type!"); return;
+            }
+            int AccountId = 0;
+            int balance = 0;
+            string balanceText= "";
+            if (txbInputs.Text.Contains("-"))
+            {
+                MessageBox.Show("you cannot type in a negative number"); return;
+            }
+            try
+            {
+                AccountId = Int32.Parse(accountType[1]);
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); MessageBox.Show("Please select an account"); }
 
-                RefreshList();
-            }
-            else
+            if (typeList[1] == " Withdraw")
+                {
+                    balanceText = "-" + txbInputs.Text;
+                    Console.WriteLine(balance);
+                }
+            Console.WriteLine(typeList[1]);
+            Console.WriteLine(accountType[0]);
+            try
             {
-                MessageBox.Show("enter a valid number");
+                balance = Int32.Parse(balanceText);
             }
+            catch(Exception ex) { Console.WriteLine(ex.Message); MessageBox.Show("Please type a number in to input"); return; }
+             
+            controller.EditAccountBalance(customer.CustomerId, accountType[0], AccountId, balance);
+            RefreshList();
+            
         }
         public void RefreshList()
         {
@@ -105,6 +113,11 @@ namespace ControllerApp
             catch (Exception ex) { Console.WriteLine(ex.Message); }
 
             RefreshList();*/
+        }
+
+        private void btnTransfer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -135,6 +135,7 @@
             this.btnTransfer.TabIndex = 8;
             this.btnTransfer.Text = "Transfer";
             this.btnTransfer.UseVisualStyleBackColor = true;
+            this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
             // 
             // txbInputs
             // 
@@ -158,9 +159,9 @@
             this.lblInput.AutoSize = true;
             this.lblInput.Location = new System.Drawing.Point(463, 159);
             this.lblInput.Name = "lblInput";
-            this.lblInput.Size = new System.Drawing.Size(35, 13);
+            this.lblInput.Size = new System.Drawing.Size(34, 13);
             this.lblInput.TabIndex = 11;
-            this.lblInput.Text = "label3";
+            this.lblInput.Text = "Input:";
             // 
             // CustomerAccountForm
             // 
