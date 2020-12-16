@@ -46,20 +46,20 @@ namespace ControllerApp
             {
                 AccountId = Int32.Parse(accountType[1]);
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message); MessageBox.Show("Please select an account"); }
+            catch (Exception ex) { Console.WriteLine(ex.Message); MessageBox.Show("Please select an account"); return; }
 
             if (typeList[1] == " Withdraw")
-                {
-                    balanceText = "-" + txbInputs.Text;
-                    Console.WriteLine(balance);
-                }
+            {
+                balanceText = "-" + txbInputs.Text;
+                Console.WriteLine(balance);
+            }
             Console.WriteLine(typeList[1]);
             Console.WriteLine(accountType[0]);
             try
             {
                 balance = Int32.Parse(balanceText);
             }
-            catch(Exception ex) { Console.WriteLine(ex.Message); MessageBox.Show("Please type a number in to input"); return; }
+            catch(Exception ex) { Console.WriteLine(ex.Message); MessageBox.Show("Please type a number into the input"); return; }
              
             controller.EditAccountBalance(customer.CustomerId, accountType[0], AccountId, balance);
             RefreshList();
@@ -119,6 +119,7 @@ namespace ControllerApp
         {
             TransferAccountForm transferAccountForm = new TransferAccountForm(customer.CustomerId);
             transferAccountForm.ShowDialog(this);
+            RefreshList();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

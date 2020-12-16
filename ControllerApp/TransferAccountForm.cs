@@ -22,7 +22,11 @@ namespace ControllerApp
             controller.CustomerList = Customer.CustomerList;
             customer = controller.FindCustomerById(customerId);
             CustomerList = Customer.CustomerList;
-            
+            RefreshList();
+        }
+        public void RefreshList()
+        {
+            cbxTakeFrom.Items.Clear();
             foreach (EverydayAccount e in customer.EverydayAccount)
             {
                 cbxTakeFrom.Items.Add("Everyday " + e.AccountId + " $" + e.Balance);
@@ -35,8 +39,23 @@ namespace ControllerApp
             {
                 cbxTakeFrom.Items.Add("Omni " + e.AccountId + " $" + e.Balance);
             }
-        }
+            cbxTakeFrom.Text = "";
 
+            cbxGiveTo.Items.Clear();
+            foreach (EverydayAccount everyday in customer.EverydayAccount)
+            {
+                cbxGiveTo.Items.Add("Everyday " + everyday.AccountId + " $" + everyday.Balance);
+            }
+            foreach (InvestmentAccount investment in customer.InvestmentAccount)
+            {
+                cbxGiveTo.Items.Add("Investment " + investment.AccountId + " $" + investment.Balance);
+            }
+            foreach (OmniAccount omni in customer.OmniAccount)
+            {
+                cbxGiveTo.Items.Add("Omni " + omni.AccountId + " $" + omni.Balance);
+            }
+            cbxGiveTo.Text = "";
+        }
         private void btnTransfer_Click(object sender, EventArgs e)
         {
             string takeFrom = cbxTakeFrom.GetItemText(cbxTakeFrom.SelectedItem);
@@ -47,17 +66,36 @@ namespace ControllerApp
             string takeFromType = takeFromList[0];
             string giveToType = giveToList[0];
             //int takeFromAccountId = takeFromList[1];
-            int balance = 0;
-            string balanceText = "";
+            
+            int amount = 0;
+            string amountText = txbAmount.Text;
             if (txbAmount.Text.Contains("-"))
             {
                 MessageBox.Show("you cannot type in a negative number"); return;
             }
+
+            int takeFromAccountId = 0;
+            int giveToAccountId = 0;
+            try
+            {
+                takeFromAccountId = Int32.Parse(takeFromList[1]);
+                giveToAccountId = Int32.Parse(giveToList[1]);
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); MessageBox.Show("Please select an account for both text boxes"); return; }
+
+            try
+            {
+                amount = Int32.Parse(amountText);
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); MessageBox.Show("Please type a number in to input"); return; }
+
+            controller.TransferAccountAmount(customer.CustomerId, takeFromAccountId, giveToAccountId, takeFromType, giveToType, amount);
+            RefreshList();
         }
 
         private void cbxTakeFrom_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            cbxGiveTo.Items.Clear();
             foreach (EverydayAccount everyday in customer.EverydayAccount)
             {
                 cbxGiveTo.Items.Add("Everyday " + everyday.AccountId + " $" + everyday.Balance);

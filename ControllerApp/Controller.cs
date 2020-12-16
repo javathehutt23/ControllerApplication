@@ -54,7 +54,7 @@ namespace ControllerApp
             return null;  
         }
 
-        public void EditAccountBalance(int customerId, string accountType, int accountId, int amount)
+        public bool EditAccountBalance(int customerId, string accountType, int accountId, float amount)
         {
             CustomerList = Customer.CustomerList;
             Customer customer = FindCustomerById(customerId);
@@ -63,7 +63,7 @@ namespace ControllerApp
                 int index = customer.EverydayAccount.FindIndex(item => item.AccountId == accountId);
                 if ((customer.EverydayAccount[index].Balance + amount) < 0)
                 {
-                    MessageBox.Show("failed transaction, tried to take out too much"); return;
+                    MessageBox.Show("failed transaction, tried to take out too much"); return false;
                 }
                 customer.EverydayAccount[index].Balance += amount;
                 Console.WriteLine(customer.EverydayAccount[index].Balance);
@@ -78,7 +78,7 @@ namespace ControllerApp
                         customer.InvestmentAccount[index].Balance -= customer.InvestmentAccount[index].Fees;
                     }
                     Customer.CustomerList = CustomerList;
-                    MessageBox.Show("failed transaction, tried to take out too much, fee incurred"); return;
+                    MessageBox.Show("failed transaction, tried to take out too much, fee incurred"); return false;
                 }
                 customer.InvestmentAccount[index].Balance += amount;
                 Customer.CustomerList = CustomerList;
@@ -95,20 +95,23 @@ namespace ControllerApp
                             customer.OmniAccount[index].Balance -= customer.OmniAccount[index].Fees;
                         }
                         Customer.CustomerList = CustomerList;
-                        MessageBox.Show("failed transaction, overdraft limit reached, Fee Incurred"); return;
+                        MessageBox.Show("failed transaction, overdraft limit reached, Fee Incurred"); return false;
                     }
                     else
                     {
-                        customer.OmniAccount[index].Balance -= customer.OmniAccount[index].Fees;
+                        //customer.OmniAccount[index].Balance -= customer.OmniAccount[index].Fees;
                         float a = customer.OmniAccount[index].Balance + customer.OmniAccount[index].OverdraftLimit;
-                        a -= customer.OmniAccount[index].Fees;
+                        a += amount;
+                        customer.OmniAccount[index].Balance += amount;
                         Customer.CustomerList = CustomerList;
-                        MessageBox.Show("failed transaction, tried to take out too much, fee incurred"); return;
+                        MessageBox.Show("You used your overdraft: $" + a + " Remaining"); return false;
                     }
                 }
-                customer.OmniAccount[index].Balance = customer.OmniAccount[index].Balance + amount;
+                customer.OmniAccount[index].Balance += amount;
                 Customer.CustomerList = CustomerList;
+                return true;
             }
+            return true;
         }
 
         public void AddAccount(int customerId, string accountType, float balance, float overdraft)
@@ -149,6 +152,19 @@ namespace ControllerApp
                 customer.OmniAccount.Add(omni);
                 Customer.CustomerList = CustomerList;
             }
+        }
+
+        public void TransferAccountAmount(int customerId, int takeFromAccountId, int giveToAccountId, string takeFromType, string giveToType, float amount)
+        {
+            CustomerList = Customer.CustomerList;
+            Customer customer = FindCustomerById(customerId);
+            float oppositeAmount = (amount - (amount * 2));
+            if(EditAccountBalance(customerId, takeFromType, takeFromAccountId, oppositeAmount))
+            {
+                EditAccountBalance(customerId, giveToType, giveToAccountId, amount);
+                MessageBox.Show("Transfer successfull");
+            }
+
         }
 
     }
