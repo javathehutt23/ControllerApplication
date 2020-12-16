@@ -167,5 +167,31 @@ namespace ControllerApp
 
         }
 
+        public void AddInterest(int customerId, string accountType, int accountId)
+        {
+            CustomerList = Customer.CustomerList;
+            Customer customer = FindCustomerById(customerId);
+            if(accountType == "Everyday")
+            {
+                MessageBox.Show("This account doesn't support interest calculations");
+                return;
+            }
+            else if(accountType == "Investment")
+            {
+                int index = customer.InvestmentAccount.FindIndex(item => item.AccountId == accountId);
+                float interestValue = (customer.InvestmentAccount[index].InterestRate/100) + 1;
+                customer.InvestmentAccount[index].Balance += (customer.InvestmentAccount[index].Balance * interestValue);
+                MessageBox.Show("Calculated interest has been added");
+            }
+            else if(accountType == "Omni")
+            {
+                int index = customer.OmniAccount.FindIndex(item => item.AccountId == accountId);
+                float interestValue = (customer.OmniAccount[index].InterestRate / 100) + 1;
+                customer.OmniAccount[index].Balance += (customer.OmniAccount[index].Balance * interestValue);
+                MessageBox.Show("Calculated interest has been added");
+            }
+            Customer.CustomerList = CustomerList;
+        }
+
     }
 }

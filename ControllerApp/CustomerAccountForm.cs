@@ -94,25 +94,11 @@ namespace ControllerApp
         private void btnDeposit_Click(object sender, EventArgs e)
         {
             lblInput.Text = "Input type: " + "Deposit";
-            /*string a = lsbAccountList.GetItemText(lsbAccountList.SelectedItem);
-            string[] b = a.Split(' ');
-            int AccountId;
-            try { AccountId = Int32.Parse(b[1]); controller.DeleteCustomer(AccountId); }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-
-            RefreshList();*/
         }
 
         private void btnWithdraw_Click(object sender, EventArgs e)
         {
             lblInput.Text = "Input type: " + "Withdraw";
-            /*string a = lsbAccountList.GetItemText(lsbAccountList.SelectedItem);
-            string[] b = a.Split(' ');
-            int AccountId;
-            try { AccountId = Int32.Parse(b[1]); controller.DeleteCustomer(AccountId); }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-
-            RefreshList();*/
         }
 
         private void btnTransfer_Click(object sender, EventArgs e)
@@ -125,6 +111,21 @@ namespace ControllerApp
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnInterest_Click(object sender, EventArgs e)
+        {
+            string a = lsbAccountList.GetItemText(lsbAccountList.SelectedItem);
+            string[] accountType = a.Split(' ');
+            int accountId = 0;
+            try { accountId = Int32.Parse(accountType[1]); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please select an account"); 
+                return;
+            }
+            controller.AddInterest(customer.CustomerId, accountType[0], accountId);
+            RefreshList();
         }
     }
 }

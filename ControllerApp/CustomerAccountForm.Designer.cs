@@ -40,14 +40,16 @@
             this.txbInputs = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblInput = new System.Windows.Forms.Label();
+            this.btnInterest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(532, 203);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(521, 203);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(56, 19);
+            this.btnSave.Size = new System.Drawing.Size(67, 29);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -164,11 +166,22 @@
             this.lblInput.TabIndex = 11;
             this.lblInput.Text = "Input:";
             // 
+            // btnInterest
+            // 
+            this.btnInterest.Location = new System.Drawing.Point(318, 324);
+            this.btnInterest.Name = "btnInterest";
+            this.btnInterest.Size = new System.Drawing.Size(110, 30);
+            this.btnInterest.TabIndex = 12;
+            this.btnInterest.Text = "Calculate Interest";
+            this.btnInterest.UseVisualStyleBackColor = true;
+            this.btnInterest.Click += new System.EventHandler(this.btnInterest_Click);
+            // 
             // CustomerAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.btnInterest);
             this.Controls.Add(this.lblInput);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txbInputs);
@@ -203,5 +216,6 @@
         private System.Windows.Forms.TextBox txbInputs;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblInput;
+        private System.Windows.Forms.Button btnInterest;
     }
 }
