@@ -37,3 +37,33 @@ C:\Users\harry\OneDrive\Desktop\ControllerApp\obj\Debug\ControllerApp.pdb
 C:\Users\harry\OneDrive\Desktop\ControllerApp\bin\Debug\ControllerApp.exe.config
 C:\Users\harry\OneDrive\Desktop\ControllerApp\bin\Debug\ControllerApp.exe
 C:\Users\harry\OneDrive\Desktop\ControllerApp\bin\Debug\ControllerApp.pdb
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\bin\Debug\ControllerApp.exe.config
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\bin\Debug\ControllerApp.exe
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\bin\Debug\ControllerApp.pdb
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.csprojAssemblyReference.cache
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.AddCustomerForm.resources
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.CustomerListForm.resources
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.EditCustomerForm.resources
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.BaseForm.resources
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.Properties.Resources.resources
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.csproj.GenerateResource.cache
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.csproj.CoreCompileInputs.cache
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.exe
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.pdb
+C:\Users\harry\Documents\CPP\Github repos\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.CustomerAccountForm.resources
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\bin\Debug\ControllerApp.exe.config
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\bin\Debug\ControllerApp.exe
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\bin\Debug\ControllerApp.pdb
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.csprojAssemblyReference.cache
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.AddCustomerForm.resources
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.CustomerAccountForm.resources
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.CustomerListForm.resources
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.EditCustomerForm.resources
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.BaseForm.resources
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.Properties.Resources.resources
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.csproj.GenerateResource.cache
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.csproj.CoreCompileInputs.cache
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.exe
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.pdb
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.AddAccountForm.resources
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\ControllerApp\obj\Debug\ControllerApp.TransferAccountForm.resources

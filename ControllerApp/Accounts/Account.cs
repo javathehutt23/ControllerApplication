@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControllerApp
 {
+    [Serializable()]
     public abstract class Account
     {
         public Customer customer;
