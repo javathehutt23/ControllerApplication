@@ -17,3 +17,9 @@ C:\Users\harry\OneDrive\Desktop\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountU
 C:\Users\harry\OneDrive\Desktop\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.dll
 C:\Users\harry\OneDrive\Desktop\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.pdb
 C:\Users\harry\OneDrive\Desktop\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.genruntimeconfig.cache
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.csprojAssemblyReference.cache
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.csproj.CoreCompileInputs.cache
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.AssemblyInfoInputs.cache
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.AssemblyInfo.cs
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.dll
+C:\Users\harry\OneDrive\Documents\CPP stuff\Year 3 files\IT7742\IT7742_assessment_2_91031026\ControllerApplication\AccountUnitTest\obj\Debug\netcoreapp2.1\AccountUnitTest.pdb
