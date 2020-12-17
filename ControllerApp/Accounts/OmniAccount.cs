@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControllerApp.Accounts
 {
+    [Serializable()]
     public class OmniAccount: Account
     {
         private float interestRate;

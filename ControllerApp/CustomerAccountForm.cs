@@ -81,7 +81,7 @@ namespace ControllerApp
             {
                 lsbAccountList.Items.Add("Omni " + e.AccountId + " $" + e.Balance);
             }
-            lsbAccountList.SelectedIndex = 0;
+            //lsbAccountList.SelectedIndex = 0;
         }
 
         private void btnAddAccount_Click(object sender, EventArgs e)

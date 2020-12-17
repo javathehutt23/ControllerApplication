@@ -1,7 +1,10 @@
 ﻿using ControllerApp.Accounts;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +26,7 @@ namespace ControllerApp
             }
             CustomerList.Add(new Customer(i, customerName, contactDetails, contactStaff));
             Customer.CustomerList = CustomerList;
+            SerializeNow();
         }
 
         public void DeleteCustomer(int customerId)
@@ -34,6 +38,7 @@ namespace ControllerApp
             {
                 if(c == customer) { CustomerList.Remove(c); Customer.CustomerList = CustomerList; break; }
             }
+            SerializeNow();
         }
 
         public void EditCustomer(int customerId, string customerName, string contactDetails, bool contactStaff)
@@ -43,6 +48,7 @@ namespace ControllerApp
             {
                 if (c.CustomerId == customerId) { c.Name = customerName; c.ContactDetails = contactDetails; c.IsStaff = contactStaff; Customer.CustomerList = CustomerList; }
             }
+            SerializeNow();
         }
 
         public Customer FindCustomerById(int customerId)
@@ -63,7 +69,7 @@ namespace ControllerApp
                 int index = customer.EverydayAccount.FindIndex(item => item.AccountId == accountId);
                 if ((customer.EverydayAccount[index].Balance + amount) < 0)
                 {
-                    MessageBox.Show("failed transaction, tried to take out too much"); return false;
+                    MessageBox.Show("failed transaction, tried to take out too much"); SerializeNow(); return false;
                 }
                 customer.EverydayAccount[index].Balance += amount;
                 Console.WriteLine(customer.EverydayAccount[index].Balance);
@@ -75,10 +81,17 @@ namespace ControllerApp
                 {
                     if (customer.InvestmentAccount[index].Balance > customer.InvestmentAccount[index].Fees)
                     {
-                        customer.InvestmentAccount[index].Balance -= customer.InvestmentAccount[index].Fees;
+                        if (customer.IsStaff)
+                        {
+                            customer.InvestmentAccount[index].Balance -= (customer.InvestmentAccount[index].Fees/2);
+                        }
+                        else
+                        {
+                            customer.InvestmentAccount[index].Balance -= customer.InvestmentAccount[index].Fees;
+                        }
                     }
                     Customer.CustomerList = CustomerList;
-                    MessageBox.Show("failed transaction, tried to take out too much, fee incurred"); return false;
+                    MessageBox.Show("failed transaction, tried to take out too much, fee incurred"); SerializeNow(); return false;
                 }
                 customer.InvestmentAccount[index].Balance += amount;
                 Customer.CustomerList = CustomerList;
@@ -92,10 +105,17 @@ namespace ControllerApp
                     {
                         if (customer.OmniAccount[index].Balance > customer.OmniAccount[index].Fees)
                         {
-                            customer.OmniAccount[index].Balance -= customer.OmniAccount[index].Fees;
+                            if (customer.IsStaff)
+                            {
+                                customer.OmniAccount[index].Balance -= (customer.OmniAccount[index].Fees/2);
+                            }
+                            else
+                            {
+                                customer.OmniAccount[index].Balance -= customer.OmniAccount[index].Fees;
+                            }
                         }
                         Customer.CustomerList = CustomerList;
-                        MessageBox.Show("failed transaction, overdraft limit reached, Fee Incurred"); return false;
+                        MessageBox.Show("failed transaction, overdraft limit reached, Fee Incurred"); SerializeNow(); return false;
                     }
                     else
                     {
@@ -104,13 +124,15 @@ namespace ControllerApp
                         a += amount;
                         customer.OmniAccount[index].Balance += amount;
                         Customer.CustomerList = CustomerList;
-                        MessageBox.Show("You used your overdraft: $" + a + " Remaining"); return false;
+                        MessageBox.Show("You used your overdraft: $" + a + " Remaining"); SerializeNow(); return false;
                     }
                 }
                 customer.OmniAccount[index].Balance += amount;
                 Customer.CustomerList = CustomerList;
+                SerializeNow();
                 return true;
             }
+            SerializeNow();
             return true;
         }
 
@@ -152,6 +174,7 @@ namespace ControllerApp
                 customer.OmniAccount.Add(omni);
                 Customer.CustomerList = CustomerList;
             }
+            SerializeNow();
         }
 
         public void TransferAccountAmount(int customerId, int takeFromAccountId, int giveToAccountId, string takeFromType, string giveToType, float amount)
@@ -179,19 +202,56 @@ namespace ControllerApp
             else if(accountType == "Investment")
             {
                 int index = customer.InvestmentAccount.FindIndex(item => item.AccountId == accountId);
-                float interestValue = (customer.InvestmentAccount[index].InterestRate/100) + 1;
-                customer.InvestmentAccount[index].Balance += (customer.InvestmentAccount[index].Balance * interestValue);
+                //float interestValue = (customer.InvestmentAccount[index].InterestRate/100) + 1;
+                customer.InvestmentAccount[index].CalculateInterest();
+                //customer.InvestmentAccount[index].Balance += (customer.InvestmentAccount[index].Balance * interestValue);
                 MessageBox.Show("Calculated interest has been added");
             }
             else if(accountType == "Omni")
             {
                 int index = customer.OmniAccount.FindIndex(item => item.AccountId == accountId);
-                float interestValue = (customer.OmniAccount[index].InterestRate / 100) + 1;
-                customer.OmniAccount[index].Balance += (customer.OmniAccount[index].Balance * interestValue);
+                customer.OmniAccount[index].CalculateInterest();
+                //float interestValue = (customer.OmniAccount[index].InterestRate / 100) + 1;
+                //customer.OmniAccount[index].Balance += (customer.OmniAccount[index].Balance * interestValue);
                 MessageBox.Show("Calculated interest has been added");
             }
             Customer.CustomerList = CustomerList;
+            SerializeNow();
         }
 
+        public void SerializeNow()
+        {
+            CustomerList = Customer.CustomerList;
+            var cList = CustomerList;
+            try
+            {
+                using (Stream stream = File.Open("data.bin", FileMode.Create))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    bin.Serialize(stream, cList);
+                }
+            }
+            catch (IOException)
+            {
+            }
+
+        }
+        public void DeSerializeNow()
+        {
+            CustomerList = Customer.CustomerList;
+            try
+                    {
+                using (Stream stream = File.Open("data.bin", FileMode.Open))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+
+                    CustomerList = (List<Customer>)bin.Deserialize(stream);
+                    Customer.CustomerList = CustomerList;
+                }
+            }
+            catch (IOException)
+            {
+            }
+        }
     }
 }

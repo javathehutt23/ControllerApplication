@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControllerApp
 {
+    [Serializable()]
     public class InvestmentAccount: Account
     {
 

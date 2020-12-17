@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ControllerApp
 {
+    [Serializable()]
     public class Customer
     {
         public static List<Customer> CustomerList = new List<Customer>();

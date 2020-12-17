@@ -19,7 +19,11 @@ namespace ControllerApp
             InitializeComponent();
             controller.CustomerList = Customer.CustomerList;
             Customer c = controller.FindCustomerById(a);
-            txbName.Text = c.Name; txbContactDetails.Text = c.ContactDetails; cbxStaff.Checked = c.IsStaff; lblCustomerID.Text = "ID: " + c.CustomerId;
+            try
+            {
+                txbName.Text = c.Name; txbContactDetails.Text = c.ContactDetails; cbxStaff.Checked = c.IsStaff; lblCustomerID.Text = "ID: " + c.CustomerId;
+            }
+            catch(NullReferenceException ex) { MessageBox.Show("please select a customer"); this.Close(); }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

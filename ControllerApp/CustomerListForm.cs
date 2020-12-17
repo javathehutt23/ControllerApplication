@@ -43,7 +43,7 @@ namespace ControllerApp
         public void FormLoad()
         {
             lsbCustomerList.Items.Clear();
-            Customer customer1 = new Customer(1, "John Schmit", "0216516123", true);
+            /*Customer customer1 = new Customer(1, "John Schmit", "0216516123", true);
 
             EverydayAccount everydayAccount = new EverydayAccount(customer1, 1, 400);
             customer1.EverydayAccount.Add(everydayAccount);
@@ -51,17 +51,21 @@ namespace ControllerApp
             customer1.OmniAccount.Add(omniAccount);
             InvestmentAccount investmentAccount = new InvestmentAccount(customer1, 1, 750);
             customer1.InvestmentAccount.Add(investmentAccount);
-
+            
             Console.WriteLine(customer1.EverydayAccount.Count);
 
-            CustomerList.Add(customer1);
-            Customer.CustomerList = CustomerList;
-            controller.CustomerList = Customer.CustomerList;
+            CustomerList.Add(customer1);*/
+
+            controller.DeSerializeNow();
+
+            CustomerList = controller.CustomerList;
+            //controller.CustomerList = Customer.CustomerList;
             foreach (Customer c in controller.CustomerList)
             {
                 lsbCustomerList.Items.Add(c.CustomerId + ", " + c.Name);
             }
-            lsbCustomerList.SelectedIndex = 0;
+            //lsbCustomerList.SelectedIndex = 0;
+            //controller.SerializeNow();
         }
 
         private void btnDeleteCustomer_Click(object sender, EventArgs e)
@@ -105,6 +109,7 @@ namespace ControllerApp
             try
             {
                 string a = lsbCustomerList.GetItemText(lsbCustomerList.SelectedItem);
+                Console.WriteLine("customer" + a);
                 string[] b = a.Split(',');
                 int CustomerId = 0;
                 try { CustomerId = Int32.Parse(b[0]); }
@@ -115,7 +120,9 @@ namespace ControllerApp
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 MessageBox.Show("Please select a customer");
+
             }
         }
     }
