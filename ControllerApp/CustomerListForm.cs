@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControllerApp.Accounts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,27 +24,49 @@ namespace ControllerApp
         // add a if statement, making sure the edit isn't called without a user selected
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
-            string a = lsbCustomerList.GetItemText(lsbCustomerList.SelectedItem);
-            string[] b = a.Split(',');
-            int CustomerId = 0;
-            try { CustomerId = Int32.Parse(b[0]); }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-            EditCustomerForm editCustomerForm = new EditCustomerForm(CustomerId);
-            editCustomerForm.ReloadForm += RefreshList;
-            editCustomerForm.ShowDialog(this);
+            try
+            {
+                string a = lsbCustomerList.GetItemText(lsbCustomerList.SelectedItem);
+                string[] b = a.Split(',');
+                int CustomerId = 0;
+                try { CustomerId = Int32.Parse(b[0]); }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                EditCustomerForm editCustomerForm = new EditCustomerForm(CustomerId);
+                editCustomerForm.ReloadForm += RefreshList;
+                editCustomerForm.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please select a customer");
+            }
         }
 
         public void FormLoad()
         {
             lsbCustomerList.Items.Clear();
-            CustomerList.Add(new Customer(1, "John Schmit", "0216516123"));
-            Customer.CustomerList = CustomerList;
-            controller.CustomerList = Customer.CustomerList;
+            /*Customer customer1 = new Customer(1, "John Schmit", "0216516123", true);
+
+            EverydayAccount everydayAccount = new EverydayAccount(customer1, 1, 400);
+            customer1.EverydayAccount.Add(everydayAccount);
+            OmniAccount omniAccount = new OmniAccount(customer1, 1, 400, 1000);
+            customer1.OmniAccount.Add(omniAccount);
+            InvestmentAccount investmentAccount = new InvestmentAccount(customer1, 1, 750);
+            customer1.InvestmentAccount.Add(investmentAccount);
+            
+            Console.WriteLine(customer1.EverydayAccount.Count);
+
+            CustomerList.Add(customer1);*/
+
+            controller.DeSerializeNow();
+
+            CustomerList = controller.CustomerList;
+            //controller.CustomerList = Customer.CustomerList;
             foreach (Customer c in controller.CustomerList)
             {
                 lsbCustomerList.Items.Add(c.CustomerId + ", " + c.Name);
             }
-            lsbCustomerList.SelectedIndex = 0;
+            //lsbCustomerList.SelectedIndex = 0;
+            //controller.SerializeNow();
         }
 
         private void btnDeleteCustomer_Click(object sender, EventArgs e)
@@ -79,6 +102,28 @@ namespace ControllerApp
             foreach(Customer c in Customer.CustomerList)
             {
                 lsbCustomerList.Items.Add(c.CustomerId +", " + c.Name);
+            }
+        }
+
+        private void BtnViewAccounts_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string a = lsbCustomerList.GetItemText(lsbCustomerList.SelectedItem);
+                Console.WriteLine("customer" + a);
+                string[] b = a.Split(',');
+                int CustomerId = 0;
+                try { CustomerId = Int32.Parse(b[0]); }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                CustomerAccountForm customerAccountForm = new CustomerAccountForm(CustomerId);
+                //customerAccountForm.ReloadForm += RefreshList;
+                customerAccountForm.Show(this);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Please select a customer");
+
             }
         }
     }

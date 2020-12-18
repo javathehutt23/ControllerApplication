@@ -1,8 +1,13 @@
-﻿using System;
+﻿using ControllerApp.Accounts;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ControllerApp
 {
@@ -16,11 +21,6 @@ namespace ControllerApp
 /// </summary>
   class Controller
     {
-<<<<<<< Updated upstream
-        public List<Customer> CustomerList = Customer.CustomerList;
-
-        public void AddCustomer(string customerName, string contactDetails)
-=======
 /// <value> List of Customer objects currently being used by the application.</value>
 	public List<Customer> CustomerList = Customer.CustomerList;
 /// <remarks>
@@ -30,7 +30,6 @@ namespace ControllerApp
 /// <param name="contactDetails">A string containing contact details.</param>
 /// <param name="contactStaff">A string containing staff contact details.</param>
         public void AddCustomer(string customerName, string contactDetails, bool contactStaff)
->>>>>>> Stashed changes
         {
             CustomerList = Customer.CustomerList;
             int i = 1;
@@ -39,8 +38,9 @@ namespace ControllerApp
                 if (c.CustomerId == i) { i++; }
                 else { break; }
             }
-            CustomerList.Add(new Customer(i, customerName, contactDetails));
+            CustomerList.Add(new Customer(i, customerName, contactDetails, contactStaff));
             Customer.CustomerList = CustomerList;
+            SerializeNow();
         }
 /// <remarks>
 /// This function deletes a Customer from the customer list.
@@ -55,11 +55,8 @@ namespace ControllerApp
             {
                 if(c == customer) { CustomerList.Remove(c); Customer.CustomerList = CustomerList; break; }
             }
+            SerializeNow();
         }
-<<<<<<< Updated upstream
-
-        public void EditCustomer(int customerId, string customerName, string contactDetails)
-=======
 /// <remarks>
 /// This function edits a Customer in the customer list.
 /// </remarks>
@@ -67,13 +64,13 @@ namespace ControllerApp
 /// <param name="contactDetails">A string containing contact details.</param>
 /// <param name="contactStaff">A string containing staff contact details.</param>
         public void EditCustomer(int customerId, string customerName, string contactDetails, bool contactStaff)
->>>>>>> Stashed changes
         {
             Customer customer = FindCustomerById(customerId);
             foreach (Customer c in CustomerList)
             {
-                if (c.CustomerId == customerId) { c.Name = customerName; c.ContactDetails = contactDetails; Customer.CustomerList = CustomerList; }
+                if (c.CustomerId == customerId) { c.Name = customerName; c.ContactDetails = contactDetails; c.IsStaff = contactStaff; Customer.CustomerList = CustomerList; }
             }
+            SerializeNow();
         }
 /// <remarks>
 /// This function finds a Customer by customerId.
@@ -87,9 +84,6 @@ namespace ControllerApp
             }
             return null;  
         }
-<<<<<<< Updated upstream
-
-=======
 /// <remarks>
 /// This function updates a customer Account balance for all of the account types.
 /// </remarks>
@@ -318,6 +312,5 @@ namespace ControllerApp
             {
             }
         }
->>>>>>> Stashed changes
     }
 }

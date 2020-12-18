@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControllerApp
 {
+    [Serializable()]
     public class InvestmentAccount: Account
     {
 
@@ -21,13 +22,13 @@ namespace ControllerApp
             get { return fees; }
             set { fees = value; }
         }
-        public InvestmentAccount(Customer c, int accountId, float balance, int interest, int fee)
+        public InvestmentAccount(Customer c, int accountId, float balance)
         {
             AccountId = accountId;
             customer = c;
             Balance = balance;
-            InterestRate = interest;
-            Fees = fee;
+            InterestRate = 3;
+            Fees = 10;
         }
 
         public float CalculateInterest()

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControllerApp
 {
+    [Serializable()]
     public class EverydayAccount : Account
     {
         //private int accountId;
@@ -34,9 +35,9 @@ namespace ControllerApp
         }*/
         public EverydayAccount(Customer c, int accountId, float balance)
         {
-            AccountId = accountId;
-            customer = c;
-            Balance = balance;
+            this.AccountId = accountId;
+            this.customer = c;
+            this.Balance = balance;
         }
 
         
